@@ -20,7 +20,7 @@ IDE: android studio<br>
 Язык программирования: Java<br>
 Минимальная версия SDK: API 26 (Android 8.0 "Oreo")<br>
 Язык конфигурации: Groovy DSL (используется файл build.gradle)<br>
-БД: SQLite
+БД: PostgreSQL
 
 ## Правила ведения веток
 ### Основная ветка - main<br> 
