@@ -128,3 +128,19 @@ tflite.run(preprocessImage(bitmap), output);
 YOLOv4 возвращает сырые данные, которые нужно обработать:
 1. Примените Non-Max Suppression (NMS), чтобы убрать дублирующие боксы.
 2. Извлеките координаты, уверенность и классы объектов. Для упрощения можно использовать библиотеку tensorflow-lite-support, которая предоставляет утилиты для постобработки.
+
+### Шаг 4: Отображение результатов
+После получения bounding boxes и классов объектов, нарисуйте их на изображении:
+
+
+Используйте Canvas и Paint для отрисовки прямоугольников на ImageView:
+
+```java
+Bitmap mutableBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
+Canvas canvas = new Canvas(mutableBitmap);Paint paint = new Paint();
+paint.setColor(Color.RED);paint.setStyle(Paint.Style.STROKE);
+paint.setStrokeWidth(5);
+// Пример: нарисовать прямоугольникcanvas.drawRect(left, top, right, bottom, paint);
+// Отобразить результат
+ImageView imageView = findViewById(R.id.imageView);imageView.setImageBitmap(mutableBitmap);
+```
