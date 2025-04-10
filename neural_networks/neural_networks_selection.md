@@ -55,3 +55,65 @@ public class DL4JExample {
         System.out.println("Тренировка завершена!");
     }
 }
+```
+
+
+## Tribuo
+
+*Простота от Oracle.*  
+
+Tribuo — лёгкая библиотека для быстрого создания моделей. Поддерживает ONNX, подходит для классификации и прототипов.
+
+### Особенности:
+- Интеграция с Java.
+- Использование моделей из Python.
+- Быстрая разработка.
+
+## TensorFlow Java
+
+*Мощь TensorFlow в Java.*  
+
+TensorFlow Java — это "мост" между Python и Java. TensorFlow на Python давно завоевал популярность благодаря своей мощной архитектуре, поддержке огромных нейросетей и интеграции с GPU. Эта библиотека позволяет использовать все преимущества TensorFlow, оставаясь в экосистеме Java.
+
+С помощью TensorFlow Java вы можете применять уже обученные модели из Python в Java-приложениях. Это не только инструмент для инференса, но и полноценная возможность для обучения моделей, обработки больших данных и работы с нейросетями. TensorFlow Java позволяет интегрировать мощь TensorFlow в ваши проекты и оптимизировать их для работы с GPU.
+
+Библиотека подходит для задач обработки изображений, текста, машинного перевода и других. Главное преимущество — возможность использовать одну модель в разных приложениях, независимо от языка её обучения, что делает её идеальной для интеграции машинного обучения в бизнес-системы.
+
+### Описание:
+Официальная Java-библиотека для работы с моделями TensorFlow. Позволяет загружать и использовать предварительно обученные модели, а также обучать новые нейросети.
+
+### Особенности:
+- Подходит для использования моделей, созданных на Python.
+- Высокая производительность благодаря взаимодействию с TensorFlow на низком уровне.
+- Часто используется в корпоративных приложениях, где Python-инфраструктура недоступна.
+
+### Пример:
+```java
+import org.tensorflow.SavedModelBundle;
+import org.tensorflow.Tensor;
+
+import java.nio.FloatBuffer;
+
+public class TensorFlowExample {
+    public static void main(String[] args) {
+        // Загрузка модели
+        SavedModelBundle model = SavedModelBundle.load("saved_model_directory");
+
+        // Входные данные
+        float[][] inputData = {{5.1f, 3.5f, 1.4f, 0.2f}};
+        Tensor<Float> inputTensor = Tensor.create(inputData);
+
+        // Выполнение инференса
+        Tensor<?> output = model.session().runner()
+            .feed("input_node_name", inputTensor)
+            .fetch("output_node_name")
+            .run()
+            .get(0);
+
+        // Вывод результата
+        FloatBuffer outputBuffer = FloatBuffer.allocate((int) output.shape()[1]);
+        output.writeTo(outputBuffer);
+        System.out.println("Результат: " + outputBuffer.get(0));
+    }
+}
+```
