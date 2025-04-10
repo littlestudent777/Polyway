@@ -6,7 +6,7 @@ YOLOv4 (You Only Look Once) — это алгоритм для обнаруже�
 ### Структура проекта
 - **Активности**: — экраны приложения.
 - **Пакет**: com.example.polyway — основной пакет.
-- Файлы: AndroidManifest.xml, res/layout, Gradle-скрипты — стандартные файлы Android-проекта.
+- **Файлы**: AndroidManifest.xml, res/layout, Gradle-скрипты — стандартные файлы Android-проекта.
 
 Цель: добавить функционал YOLOv4 для обработки изображений (например, обнаружение объектов на камере или в загруженных изображениях).
 
@@ -31,3 +31,35 @@ YOLOv4 изначально предоставляется в формате Dar
   tflite_convert --graph_def_file=yolov4.pb --output_file=yolov4.tflite --input_arrays=input --output_arrays=output
   ```
 Полученный файл .tflite можно будет использовать в Android.
+
+## Шаг 2: Добавление TensorFlow Lite в ваш проект
+
+### 2.1. Добавьте зависимости в Gradle
+
+Для работы с TensorFlow Lite в Android-проекте необходимо добавить соответствующие зависимости. Откройте файл build.gradle на уровне модуля app и добавьте следующие строки в секцию dependencies:
+
+```
+dependencies {
+    implementation 'org.tensorflow:tensorflow-lite:2.9.0'
+    implementation 'org.tensorflow:tensorflow-lite-support:0.4.0'
+    implementation 'org.tensorflow:tensorflow-lite-metadata:0.4.0'
+}
+```
+Убедитесь, что в файле build.gradle на уровне проекта настроены репозитории Maven. Проверьте или добавьте следующее в секцию allprojects:
+
+```
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+```
+После добавления зависимостей синхронизируйте проект с Gradle, нажав на кнопку "Sync Project with Gradle Files" в Android Studio.
+
+### 2.2. Добавьте модель в проект
+Чтобы использовать модель YOLOv4 в формате TensorFlow Lite, необходимо добавить файл модели в ваш проект:
+
+Создайте папку assets, если её ещё нет, по пути app/src/main/assets/.
+Поместите файл модели yolov4.tflite (полученный на предыдущем шаге) в эту папку.
+Теперь модель готова к использованию в вашем приложении. На следующем шаге мы напишем код для загрузки и работы с этой моделью.
