@@ -32,9 +32,9 @@ YOLOv4 изначально предоставляется в формате Dar
   ```
 Полученный файл .tflite можно будет использовать в Android.
 
-## Шаг 2: Добавление TensorFlow Lite в ваш проект
+### Шаг 2: Добавление TensorFlow Lite в ваш проект
 
-### 2.1. Добавьте зависимости в Gradle
+#### 2.1. Добавьте зависимости в Gradle
 
 Для работы с TensorFlow Lite в Android-проекте необходимо добавить соответствующие зависимости. Откройте файл build.gradle на уровне модуля app и добавьте следующие строки в секцию dependencies:
 
@@ -57,9 +57,74 @@ allprojects {
 ```
 После добавления зависимостей синхронизируйте проект с Gradle, нажав на кнопку "Sync Project with Gradle Files" в Android Studio.
 
-### 2.2. Добавьте модель в проект
+#### 2.2. Добавьте модель в проект
 Чтобы использовать модель YOLOv4 в формате TensorFlow Lite, необходимо добавить файл модели в ваш проект:
 
 Создайте папку assets, если её ещё нет, по пути app/src/main/assets/.
 Поместите файл модели yolov4.tflite (полученный на предыдущем шаге) в эту папку.
 Теперь модель готова к использованию в вашем приложении. На следующем шаге мы напишем код для загрузки и работы с этой моделью.
+
+### 3. Изучение взаимодействия и обучения
+#### 3.1. Загрузка модели
+В одной из активностей (например, MainActivity) загрузите модель TensorFlow Lite:
+```java
+import org.tensorflow.lite.Interpreter;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
+import android.content.res.AssetFileDescriptor;
+import java.io.FileInputStream;
+
+public class MainActivity extends AppCompatActivity {
+    private Interpreter tflite;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        try {
+            tflite = new Interpreter(loadModelFile());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private MappedByteBuffer loadModelFile() throws IOException {
+        AssetFileDescriptor fileDescriptor = this.getAssets().openFd("yolov4.tflite");
+        FileInputStream inputStream = new FileInputStream(fileDescriptor.getFileDescriptor());
+        FileChannel fileChannel = inputStream.getChannel();
+        long startOffset = fileDescriptor.getStartOffset();
+        long declaredLength = fileDescriptor.getDeclaredLength();
+        return fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, declaredLength);
+    }
+}
+```
+#### 3.2. Предобработка изображения
+YOLOv4 ожидает входное изображение размером 416x416 или 608x608. Нужно изменить размер изображения и нормализовать его (привести значения пикселей к диапазону [0, 1]):
+```java
+import android.graphics.Bitmap;
+
+public float[][][][] preprocessImage(Bitmap bitmap) {
+    Bitmap resizedBitmap = Bitmap.createScaledBitmap(bitmap, 416, 416, true);
+    float[][][][] input = new float[1][416][416][3];
+    for (int x = 0; x < 416; x++) {
+        for (int y = 0; y < 416; y++) {
+            int pixel = resizedBitmap.getPixel(x, y);
+            input[0][x][y][0] = ((pixel >> 16) & 0xff) / 255.0f; // R
+            input[0][x][y][1] = ((pixel >> 8) & 0xff) / 255.0f;  // G
+            input[0][x][y][2] = (pixel & 0xff) / 255.0f;         // B
+        }
+    }
+    return input;
+}
+```
+#### 3.3. Запуск модели
+Выполните инференс (предсказание) с помощью модели:
+```java
+float[][] output = new float[1][25200][85];
+tflite.run(preprocessImage(bitmap), output);
+```
+#### 3.4. Постобработка результатов
+YOLOv4 возвращает сырые данные, которые нужно обработать:
+1. Примените Non-Max Suppression (NMS), чтобы убрать дублирующие боксы.
+2. Извлеките координаты, уверенность и классы объектов. Для упрощения можно использовать библиотеку tensorflow-lite-support, которая предоставляет утилиты для постобработки.
