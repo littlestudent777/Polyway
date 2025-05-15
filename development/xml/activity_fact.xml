@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Заголовок -->
+    <TextView
+        android:id="@+id/activity_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="16dp" />
+
+    <!-- Прокручиваемый список фактов -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Факт 1 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1) С.Ю. Витте — автор манифеста 17 октября 1905 года, который ограничивал самодержавие и создавал Государственную думу. Его денежная реформа сделала рубль устойчивой валютой. В железнодорожной отрасли при нем произошел значительный рост."
+                android:textSize="16sp"
+                android:paddingBottom="8dp" />
+
+            <!-- Факт 2 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2) У Политеха есть своя планета! В 2002 году по предложению института прикладной астрономии Российской федерации и по решению Международного астрономического Союза малая планета №14318 была названа “Политехник” в честь нашего СПбПУ."
+                android:textSize="16sp"
+                android:paddingBottom="8dp" />
+
+            <!-- Факт 3 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3) Музейное дело в политехническом берёт своё начало в далеком 1901 году, однако тогда существовали только разрозненные кафедральные коллекции. Лишь 22 ноября 1976 года был издан приказ №302: «Создать на хорах Актового зала музей истории Ленинградского ордена Ленина политехнического института им. М.И. Калинина и постоянную выставку научного и технического творчества студентов». Годом позднее 3 ноября 1977 года состоялось торжественное открытие общеинститутского музея истории ЛПИ."
+                android:textSize="16sp"
+                android:paddingBottom="8dp" />
+
+            <!-- Факт 4 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="4) Более тридцати лет ученые-орнитологи ведут наблюдения за птицами в Политехническом парке. Видовой состав птиц и их численность постоянно изменялось. В западной и центральной частях парка обнаружено 50 гнёзд 31 вида!"
+                android:textSize="16sp"
+                android:paddingBottom="8dp" />
+
+            <!-- Факт 5 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="5) В подробной программе всех отделений среди обязательных предметов на 1909-1910 учебный год можно встретить: гигиену, фабричную гигиену, счетоводство, фабричное законодательство."
+                android:textSize="16sp"
+                android:paddingBottom="8dp" />
+
+            <!-- Факт 6 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="6) На главной лестнице ГЗ снимали сериал “Тест на Беременность”."
+                android:textSize="16sp"
+                android:paddingBottom="8dp" />
+
+            <!-- Факт 7 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="7) В 1920 г. студентом Львом Терменом изобретен первый в мире электронный музыкальный бесконтактный инструмент - «Терменвокс»."
+                android:textSize="16sp"
+                android:paddingBottom="8dp" />
+
+            <!-- Факт 8 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="8) За выдающиеся заслуги в освоении космоса 11 лунных кратеров и 16 планет названы именами политехников."
+                android:textSize="16sp"
+                android:paddingBottom="8dp" />
+
+            <!-- Факт 9 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="9) Раньше обучение в университете было платным (100 руб золотом ежегодно), так еще и приходить на занятия надо было в форменной одежде. (На плечах форменной одежды политехники носили монограмму Министерство финансов.)"
+            android:textSize="16sp"
+            android:paddingBottom="8dp" />
+
+            <!-- Факт 10 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="10) Профессор Н.Д. Зелинский совместно с инженером М.И. Куммантом (автором резиновой маски) создал противогаз, успешно испытанный в присутствии императора и изготовленный в количестве 11 миллионов штук. Этот противогаз заменил неудачный образец, ранее разработанный в Горном институте, и сохранил жизни многих тысяч солдат и офицеров."
+                android:textSize="16sp"
+                android:paddingBottom="8dp" />
+
+            <!-- Факт 11 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="11) В Политехе был открыт первый в мире студенческий строительный отряд в 1948 году."
+                android:textSize="16sp"
+                android:paddingBottom="8dp" />
+
+            <!-- Факт 12 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="12) Мало кто знает, что Евгений Замятин учился в Политехническом институте, здесь же он встретил свою будущую жену, которая работала в госпитале."
+                android:textSize="16sp"
+                android:paddingBottom="8dp" />
+
+            <!-- Факт 13 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="13) Создатель знаменитого танка Т-34, Михаил Ильич Кошкин, также учился в нашем университете."
+                android:textSize="16sp"
+                android:paddingBottom="8dp" />
+
+            <!-- Факт 14 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="14) В первые годы в Политехническом институте обучались только студенты-мужчины, но уже через 5 лет и женщины смогли приступить к занятиям."
+                android:textSize="16sp"
+                android:paddingBottom="8dp" />
+            <!-- Факт 15 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="15)  ИБСиБ был создан в 2017 году как объединенный биокластер мирового уровня в Политехе Петра.
+                Многие исследования Политех проводит в медицинской отрасли:
+                так Политехом была создана разработка, которая позволяет диагностировать
+                онкологию легких на ранней стадии — делает это институт ИБСиБ."
+                android:textSize="16sp"
+                android:paddingBottom="8dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Кнопка "Назад" -->
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Назад"
+        android:layout_margin="16dp" />
+
+</LinearLayout>
