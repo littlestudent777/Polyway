@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Поля для точки A -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Точка A (широта, долгота):"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/point_a_lat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Широта"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/point_a_lon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Долгота"
+            android:inputType="numberDecimal" />
+
+        <Button
+            android:id="@+id/add_point_a_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Добавить A" />
+    </LinearLayout>
+
+    <!-- Поля для точки B -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Точка B (широта, долгота):"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/point_b_lat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Широта"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/point_b_lon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Долгота"
+            android:inputType="numberDecimal" />
+
+        <Button
+            android:id="@+id/add_point_b_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Добавить B" />
+    </LinearLayout>
+
+    <!-- Карта -->
+    <com.yandex.mapkit.mapview.MapView
+        android:id="@+id/mapview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="16dp" />
+
+    <!-- Текст с расстоянием -->
+    <TextView
+        android:id="@+id/distance_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:padding="16dp"
+        android:textSize="16sp" />
+
+    <!-- Текст для краткой истории -->
+    <TextView
+        android:id="@+id/short_history_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:background="@android:color/white"
+        android:padding="8dp"
+        android:textColor="@android:color/black"
+        android:textSize="14sp" />
+
+    <!-- Текст для полной истории -->
+    <TextView
+        android:id="@+id/long_history_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:background="@android:color/white"
+        android:padding="8dp"
+        android:textColor="@android:color/black"
+        android:textSize="14sp" />
+
+    <!-- Кнопка очистки -->
+    <Button
+        android:id="@+id/clear_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Очистить"
+        android:enabled="false" />
+
+    <!-- Кнопка "Назад" -->
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Назад"
+        android:backgroundTint="#FF0000"
+        android:textColor="#FFFFFF" />
+
+</LinearLayout>

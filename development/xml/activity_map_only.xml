@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.yandex.mapkit.mapview.MapView
+        android:id="@+id/mapview"
+        android:layout_width="match_parent"
+        android:layout_height="246dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <Button
+            android:id="@+id/run_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Беги, смотри, фоткай"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/ring_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Внешнее кольцо"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/soul_tour_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Прогулка для тех, кто ещё верит в чудеса!"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/food_tour_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Обжор-тур"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/paracetamol_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="В поисках парацетамола"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/home_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="В поисках дома"
+            android:layout_marginBottom="8dp" />
+        <Button
+            android:id="@+id/fact_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Факты, в которые мы сами сначала не поверили"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/watch_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Предложи маршрут"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/back_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Назад" />
+
+    </LinearLayout>
+
+</LinearLayout>
